@@ -37,8 +37,20 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/timesnowdb");
-var db = mongoose.connection;
+
+    var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/timesnowdb';
+
+    var PORT = process.env.PORT || 3000;
+
+mongoose.connect(uristring, function (err, res) {
+      if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+      console.log ('Succeeded connected to: ' + uristring);
+      }
+    });
+    
+  var db = mongoose.connection;
 
 // Show any mongoose errors
 db.on("error", function(error) {
@@ -215,6 +227,6 @@ Article.findOneAndUpdate({"_id": req.params.id}, {"saved": "false"}, function(er
 });
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });

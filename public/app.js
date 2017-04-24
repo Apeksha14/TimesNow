@@ -56,7 +56,7 @@ $.ajax({
 
 $('#saveModal').on('show.bs.modal', function () {
 
-  var thisId = $("#savebtn").attr("data-id"); 
+  var thisId = $("button").attr("data-id"); 
 
    $("#modalBodysave").text(" Article Saved");
 

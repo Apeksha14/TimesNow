@@ -11,10 +11,9 @@ var ArticleSchema = new Schema({
     required: true
   },
   // link is a required string
- // link: {
-   // type: String,
-   // required: true
- // },
+  link: {
+    type: String
+  },
   // This only saves one note's ObjectId, ref refers to the Note model
   note: {
     type: [Schema.Types.ObjectId],

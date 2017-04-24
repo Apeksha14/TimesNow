@@ -19,8 +19,8 @@ function getArticles()
 
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-  // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' class='myButton1' id='savebtn' data-toggle='modal' data-target='#saveModal'>Save</button><br/><a id='articleid' href='"+data[i].link + "'>"+data[i].link+"</a></p>");
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' class='myButton1' id='savebtn' data-toggle='modal' data-target='#saveModal'>Save</button><br/><a id='articleid'></a></p>");
+   $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' class='myButton1' id='savebtn' data-toggle='modal' data-target='#saveModal'>Save</button><br/><a id='articleid' href='"+data[i].link + "'>"+data[i].link+"</a></p>");
+   // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' class='myButton1' id='savebtn' data-toggle='modal' data-target='#saveModal'>Save</button><br/><a id='articleid'></a></p>");
 
     $("#modalBodyScrape").html(data.length+" Articles Scraped");
 
@@ -122,8 +122,8 @@ $.getJSON("/saved", function(data) {
 
     for (var i = 0; i < data.length; i++) {
         $("#articles").empty();
-        //$("#saved").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' id='deletebtn' class='myButton1' data-toggle='modal' data-target='#deleteModal'>Delete</button><button data-id='" + data[i]._id + "'type='button' class='myButton1' id='addnotes"+i+"'  data-toggle='modal' data-target='#exampleModal'>Add Notes</button><br/><a id='articleid' href='"+data[i].link + "'>"+data[i].link+"</a></p>");
-               $("#saved").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' id='deletebtn' class='myButton1' data-toggle='modal' data-target='#deleteModal'>Delete</button><button data-id='" + data[i]._id + "'type='button' class='myButton1' id='addnotes"+i+"'  data-toggle='modal' data-target='#exampleModal'>Add Notes</button><br/><a id='articleid'></a></p>");
+        $("#saved").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' id='deletebtn' class='myButton1' data-toggle='modal' data-target='#deleteModal'>Delete</button><button data-id='" + data[i]._id + "'type='button' class='myButton1' id='addnotes"+i+"'  data-toggle='modal' data-target='#exampleModal'>Add Notes</button><br/><a id='articleid' href='"+data[i].link + "'>"+data[i].link+"</a></p>");
+        //$("#saved").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "'type='button' id='deletebtn' class='myButton1' data-toggle='modal' data-target='#deleteModal'>Delete</button><button data-id='" + data[i]._id + "'type='button' class='myButton1' id='addnotes"+i+"'  data-toggle='modal' data-target='#exampleModal'>Add Notes</button><br/><a id='articleid'></a></p>");
 
   }
   }

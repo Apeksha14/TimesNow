@@ -37,7 +37,7 @@ app.use(express.static("public"));
 
 // Database configuration with mongoose
 
-    var uristring = process.env.MONGODB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/timesnowdb';
+    var uristring = process.env.MONGOLAB_MAROON_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/timesnowdb';
 
     var PORT = process.env.PORT || 3000;
 

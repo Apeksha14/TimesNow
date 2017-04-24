@@ -19,7 +19,6 @@ var Article = require("./models/Article.js");
 // Our scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
-var path = require('path');
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
@@ -93,7 +92,7 @@ app.get("/scrape", function(req, res) {
         }
         // Or log the doc
         else {
-          console.log(doc);
+          //console.log(doc);
         }
       });
       
@@ -108,7 +107,6 @@ app.get("/scrape", function(req, res) {
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
 
-  console.log("articles");
   // TODO: Finish the route so it grabs all of the articles
     Article.find({"saved":"false"},function(err,data){
 if(err)
@@ -134,13 +132,67 @@ app.get("/articles/:id", function(req, res) {
   // then responds with the article with the note included
 
   Article.findOne({"_id":req.params.id}).populate("note").exec(function(err,data){
+
+      
       if (err) {
           res.send(err);
         }
         // Or send the newdoc to the browser
         else {
-          console.log(data);
           res.send(data);
+        }
+
+    });
+
+});
+
+app.get("/notes/:id", function(req, res) {
+
+
+  // TODO
+  // ====
+
+  // Finish the route so it finds one article using the req.params.id,
+
+  // and run the populate method with "note",
+
+  // then responds with the article with the note included
+
+  Article.findOne({"_id":req.params.id}).populate("note").exec(function(err,data){
+
+      if (err) {
+          console.log(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+
+            var noteData = [];
+
+            for(var i=0;i<data.note.length;i++)
+            {
+
+                  noteData.push(data.note[i]);
+
+            }
+
+            console.log(noteData);
+
+            Note.find({"_id":{$in:noteData}}).exec(function(err,data){
+
+                if(err){
+
+                  res.send(err)
+
+                }
+                else{
+
+                  res.send(data);
+
+                }
+
+
+                });
+
         }
 
     });
@@ -161,6 +213,8 @@ app.post("/articles/:id", function(req, res) {
   // and update it's "note" property with the _id of the new note
 
     var newNote = new Note(req.body);
+
+    console.log(newNote);
   // Save the new note to mongoose
   newNote.save(function(error, doc) {
     // Send any errors to the browser
@@ -170,7 +224,7 @@ app.post("/articles/:id", function(req, res) {
     // Otherwise
     else {
       // Find our user and push the new note id into the User's notes array //push for arrays 
-      Article.findOneAndUpdate({"_id": req.params.id}, {"note": doc._id }, function(err, newdoc) {
+      Article.findOneAndUpdate({"_id": req.params.id}, {$push:{"note": [doc._id]} }, function(err, newdoc) {
         // Send any errors to the browser
         if (err) {
           res.send(err);
@@ -187,7 +241,6 @@ app.post("/articles/:id", function(req, res) {
 
 app.get("/saved", function(req, res) {
 
-  console.log("saved");
   // TODO: Finish the route so it grabs all of the articles
     Article.find({"saved":true},function(err,data){
 if(err)
@@ -213,7 +266,7 @@ Article.findOneAndUpdate({"_id": req.params.id}, {"saved": "true"}, function(err
 });
 
 app.post("/delete/:id", function(req, res) {
-console.log("DELETE ARTICLE");
+
 Article.findOneAndUpdate({"_id": req.params.id}, {"saved": "false"}, function(err, newdoc) {
   if (err) {
           res.send(err);
@@ -221,7 +274,21 @@ Article.findOneAndUpdate({"_id": req.params.id}, {"saved": "false"}, function(er
         // Or send the newdoc to the browser
         else {
           res.send(newdoc);
-          console.log("DELETE"+newdoc);
+        }
+});
+});
+
+app.post("/notedelete/:id", function(req, res) {
+
+console.log("NOTE DELETED"+req.params.id);
+
+Note.remove({"_id": req.params.id}, function(err, newdoc) {
+  if (err) {
+          res.send(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+          res.send(newdoc);
         }
 });
 });

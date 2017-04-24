@@ -54,11 +54,11 @@ footer{
 #saved p{
 	text-align: left;
 	font-size: 25px;
-}
+} 
 
 #modalBodysave,#deletemodalBody
 {
-	color:red;
+	color:lightcyan;
 	font-size:20px;
 }
 
@@ -73,6 +73,22 @@ footer{
 {
 	background-color: #415989;
 }
+
+#prevNotes
+{
+	color:#415989;
+}
+
+#deletenote
+{
+	float:right;
+}
+#close
+{
+	height:20px;
+	width:20px;
+}
+
 .myButton {
 	-moz-box-shadow: 3px 4px 0px 0px #899599;
 	-webkit-box-shadow: 3px 4px 0px 0px #899599;

@@ -59,8 +59,8 @@
                      <li>
                         <a class="page-scroll myButton" href="#about">Saved Articles</a>
                     </li>
-                    <li>
-                        <a class="page-scroll myButton" data-toggle="modal" data-target="#scrapemodal" href="#scrapemodal" onclick="getArticles();">Scrape Articles</a>
+                    <li> 
+                        <a class="page-scroll myButton" data-toggle="modal" data-target="#scrapemodal" href="#scrapemodal">Scrape Articles</a>
                     </li>
                 </ul>
             </div>
@@ -136,11 +136,11 @@
   </div><!-- /.modal --> 
 
     <!-- About Section -->
-    <section id="about" class="container content-section text-left pre-scrollable" >
+    <section id="about" class="container content-section text-left " >
         <!--<div class="row">
             
             <div class="col-lg-8 col-lg-offset-2 pre-scrollable" style="height: 100%;overflow: scroll;">-->
-                
+                <h2 id="heading"></h2>
                 <div id="articles"></div>
                 <div id="saved"></div>
                 
@@ -149,21 +149,18 @@
     </section>
 
     
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Notes for Article<span id="articleid"></span></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Notes for Article<span id="articleidmodal"></span></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+          <div id="prevNotes"></div>
         <form>
-          <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Title</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
           <div class="form-group">
             <label for="message-text" class="form-control-label">Notes</label>
             <textarea class="form-control" id="message-text"></textarea>
@@ -172,7 +169,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save Note</button>
+        <button type="button" id="saveNoteModal" data-dismiss="modal" class="btn btn-primary">Save Note</button>
       </div>
     </div>
   </div>

@@ -51,16 +51,16 @@
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li>
-                        <a class="myButton" href="#page-top">Home</a>
+                        <a class="myButton" href="#page-top"><button id="home">Home</button></a>
                     </li>
                     <!--<li>
                         <a class="page-scroll myButton" href="#about">All Articles</a>
                     </li>-->
                      <li>
-                        <a class="page-scroll myButton" href="#"><button id="savedart">Saved Articles</button></a>
+                        <a class="page-scroll myButton" href="#about"><button id="savedart">Saved Articles</button></a>
                     </li>
                     <li> 
-                        <a class="page-scroll myButton" data-toggle="modal" data-target="#scrapemodal" href="#scrapemodal">Scrape Articles</a>
+                        <a class="page-scroll myButton" data-toggle="modal" data-target="#scrapemodal" href="#scrapemodal"><button id="scrapebtn">Scrape Articles</button></a>
                     </li>
                 </ul>
             </div>
@@ -169,7 +169,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="saveNoteModal" data-dismiss="modal" class="btn btn-primary">Save Note</button>
+        <button type="button" id="saveNoteModal" data-dismiss="modal" class="btn btn-primary saveNote">Save Note</button>
       </div>
     </div>
   </div>

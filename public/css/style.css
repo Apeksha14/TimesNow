@@ -172,3 +172,10 @@ footer{
 	top:1px;
 }
 
+#savedart,#scrapebtn,#home
+{
+	background-color: transparent;
+	border:none;
+		font-size:20px;
+
+}

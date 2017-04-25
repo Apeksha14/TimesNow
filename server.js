@@ -82,6 +82,8 @@ app.get("/scrape", function(req, res) {
       result.title = $(this).text();
       result.link = $(this).attr("href");
 
+      console.log(result.link);
+
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       var entry = new Article(result);

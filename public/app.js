@@ -108,7 +108,7 @@ $(document).on("click", "p .deletearticle", function() {
 
 function savedArticle()
 {
-
+$("#saved").empty();
 $.getJSON("/saved", function(data) {
   if(data.length === 0)
   {

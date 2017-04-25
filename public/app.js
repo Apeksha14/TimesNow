@@ -94,10 +94,9 @@ $(document).on("click", "p .deletearticle", function() {
     .done(function(data) {
       // Log the response
 
-      savedArticle();
+      setTimeout(savedArticle,400); 
       
-
-      $("#deletemodalBody").html("Article Deleted");
+       $("#deletemodalBody").html("Article Deleted");
 
       //$("#saved").load(" #saved");
 

@@ -94,11 +94,11 @@ $(document).on("click", "p .deletearticle", function() {
     .done(function(data) {
       // Log the response
 
-      setTimeout(savedArticle,400); 
+      //setTimeout(savedArticle,400); 
       
        $("#deletemodalBody").html("Article Deleted");
 
-      //$("#saved").load(" #saved");
+      $("#saved").load(" #saved");
 
 
 
